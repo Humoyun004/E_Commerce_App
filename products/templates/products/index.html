@@ -1,0 +1,30 @@
+{% extends 'products/base.html' %}
+
+{% block title %}
+    <title>Home Page!</title>
+{% endblock %}
+
+{% block content %}
+    <h1>All Products!</h1>
+    <hr class="line">
+   <div class="row">
+    {% for good in goods %}
+    <div class="col-lg-3 col-md-4 col-sm-6">
+        <a href="{% url 'message' pk=good.pk %}" class="text-decoration-none text-dark">
+            <div class="card mb-3">
+                <img src="{{ good.photo_video.url }}" class="card-img-top img_title" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ good.title }} ({{ good }})</h5>
+                    <h6><i class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-warning"></i>   {{ good.rating }} </h6>
+                    <p class="card-text mt-4"><i class="fa-solid fa-dollar-sign star"></i> {{ good.price }} (<strong>{{ good.currency }}</strong>)</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+{% endblock %}
